@@ -110,5 +110,59 @@ module.exports = HomeComponent;
 - `state` is immutable! Represents data that is available to a container, and which can be passed down to components.
 
 
-### P.S.
-- You can change `state` with `this.setState` function. I haven't written the tutorial for this yet.
+### `this.setState`
+- You can change `state` with `this.setState` function.
+- Jingo does the when an `axios` call is returned.
+- example:
+```
+handleUserSubmit(event){
+		event.preventDefault();
+
+		let movie = $(event.target).find("input:text").val();
+
+		multiSearch(movie)
+			.then(function(data){
+				this.setState({
+					search: true,
+					movieTitle: movie,
+					moviesFound: data
+				})
+			})
+	},
+```
+
+- `this.setState` automatically rerenders components, passing the new state down as props.
+
+### `=>`
+- this is needed to bind `this` within the `multiSearch` function, see below:
+```
+handleUserSubmit(event){
+		event.preventDefault();
+
+		let movie = $(event.target).find("input:text").val();
+
+		multiSearch(movie)
+			.then((data) => {
+				this.setState({
+					search: true,
+					movieTitle: movie,
+					moviesFound: data
+				})
+			})
+	},
+```
+- The key thing to notice here is this: `.then((data) => {`
+- This is a big difference between es5 and es6: the arrow function binds this automatically.
+- In es5, we would have to manually `.bind(this)`, like below:
+```
+multiSearch(movieTitle)
+    .then(function(data){
+
+    this.setState({
+        search : true,
+        movieTitle : movieTitle,
+        moviesFound : data,
+        loading: true
+    })
+}.bind(this))
+```

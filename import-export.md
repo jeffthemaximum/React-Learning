@@ -54,3 +54,21 @@ export class AnotherTemplate {}
 import {Template, AnotherTemplate} from './components/templates'
 ```
 - Notice the `{}` syntax here. You don't need this with the `default` export.
+
+- Jingo uses a different method for exporting multiple functions per file. **NOTE** he does this for functions, haven't tested with containers or components.
+- In part 4 of his tutorial, he exports two functions with:
+```
+module.exports = {
+    singleSearch : singleSearch,
+    multiSearch : multiSearch
+}
+```
+- When I tried to do this like this:
+```
+export class singleSearch {}
+export class multiSearch {}
+```
+- ^ That threw an error, but the `module.exports` works.
+
+**QUESTION!!**
+- Why is that?

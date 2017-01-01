@@ -69,5 +69,6 @@ export class singleSearch {}
 export class multiSearch {}
 ```
 - ^ That threw an error, but the `module.exports` works.
+
 **QUESTION!!**
 - Why is that?

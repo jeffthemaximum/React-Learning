@@ -95,8 +95,8 @@ ReactDOM.render(
 const mapStateToProps = (state, ownProps) => {
   ...
   return {
-      ...
-      rewardsData: state.rewardsData.rewardPledgeAmount
+    ...
+    rewardsData: state.rewardsData.rewardPledgeAmount
   }
 }
 ```
@@ -135,3 +135,6 @@ initialPledgeAmount(){
   }
 },
 ```
+
+**SUMMARY**
+![enter image description here](http://i.imgur.com/ZMo1od7.jpg)
